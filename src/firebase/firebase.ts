@@ -8,10 +8,10 @@ import { getFirestore } from "firebase/firestore";
 const firebaseConfig = {
   apiKey: process.env.VITE_FIREBASE_API_KEY,
   authDomain: process.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: "restaurant-panel-1c568",
-  storageBucket: "restaurant-panel-1c568.firebasestorage.app",
-  messagingSenderId: "158286369032",
-  appId: "1:158286369032:web:d7fc3b71a14d928f261cbd"
+  projectId: process.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.VITE_FIREBASE_APP_ID
 };
 
 // Initialize Firebase

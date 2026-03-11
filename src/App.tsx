@@ -1,35 +1,100 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import Footer from "./components/main/Footer.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setOffset(window.pageYOffset);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <main className="rounded-3 bg-white h-25">
+        <div
+          style={{
+            height: "25vh",
+            backgroundImage: `url('./burger.jpg')`,
+            backgroundPosition: `center ${offset * -0.1 - 40}%`,
+          }}
+          className="d-flex justify-content-center align-items-center rounded-top-3"
+        >
+          <h1 className="text-white">SUITABLE</h1>
+        </div>
+        <div className="p-3 container">
+          <div className="row">
+            <div className="col-8 border">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bootstrap
+              container içinde normal içerik.Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. Bootstrap container içinde normal
+              içerik.Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Bootstrap container içinde normal içerik.Lorem ipsum dolor sit
+              amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.Lorem ipsum dolor
+              sit amet, consectetur adipiscing elit. Bootstrap container içinde
+              normal içerik.Lorem ipsum dolor sit amet, consectetur adipiscing
+              elit. Bootstrap container içinde normal içerik.
+            </div>
+            <div className="col-4 border">
+              <select class="form-select" aria-label="Default select example">
+                <option value="1">Hamburgerler</option>
+                <option value="pizza">Pizzalar</option>
+                <option value="salad">Salatalar</option>
+                <option value="dessert">Tatlılar</option>
+              </select>
+            </div>
+            
+          </div>
+        </div>
+      </main>
+      <footer className="fixed-bottom">
+        <Footer />
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
