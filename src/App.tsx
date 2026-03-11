@@ -86,7 +86,7 @@ function App() {
                 <option value="dessert">Tatlılar</option>
               </select>
             </div>
-            
+            </div>
           </div>
         </div>
       </main>
