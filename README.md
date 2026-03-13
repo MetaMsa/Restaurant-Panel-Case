@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# Restaurant Panel Case
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje **React + TypeScript + Firebase Firestore** kullanılarak geliştirilmiş basit bir **restoran sipariş panelidir**.
+Kullanıcılar ürünleri görüntüleyebilir, sepete ekleyebilir ve sipariş oluşturabilir.
 
-Currently, two official plugins are available:
+Proje bir **case çalışması** kapsamında geliştirilmiştir.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Özellikler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Kategoriye göre ürün listeleme
+* Sepete ürün ekleme
+* Sepette ürün miktarını artırma / azaltma
+* Sepetten ürün kaldırma
+* Sepetin **LocalStorage ile kalıcı olması**
+* Sipariş oluşturma
+* **Firebase Firestore** entegrasyonu
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Kullanılan Teknolojiler
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* **React**
+* **TypeScript**
+* **Firebase Firestore**
+* **Vite**
+* **Bootstrap**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Proje Yapısı
+
+```id="j2h5dc"
+src
+ ├─ components
+ │   ├─ main
+ │   │   ├─ Cart.tsx
+ │   │   └─ Order.tsx
+ │   └─ product
+ │       └─ Modal.tsx
+ │
+ ├─ hooks
+ │   ├─ useProducts.ts
+ │   └─ useOrders.ts
+ │
+ ├─ services
+ │   ├─ orderService.ts
+ │   └─ productService.ts
+ │
+ ├─ firebase
+ │   └─ firebase.ts
+ │
+ └─ App.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Kurulum
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Projeyi klonla
+
+```id="v7hx4q"
+git clone https://github.com/MetaMsa/Restaurant-Panel-Case.git
 ```
+
+Bağımlılıkları yükle
+
+```id="3ys0p1"
+npm install
+```
+
+Projeyi çalıştır
+
+```id="gl0s0e"
+npm run dev
+```
+
+---
+
+## Firebase Kurulumu
+
+Bir Firebase projesi oluşturup aşağıdaki bilgileri `.env` dosyasına ekleyin.
+
+```id="7r2a0n"
+VITE_FIREBASE_API_KEY=your_key
+VITE_FIREBASE_AUTH_DOMAIN=your_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+```
+
+---
+
+## Firestore Veri Yapısı
+
+### products
+
+```id="25nb5p"
+products
+  └─ productId
+       name
+       type
+       price
+       description
+       imageUrl
+       createdAt
+```
+
+### orders
+
+```id="kegc96"
+orders
+  └─ orderId
+       items
+        └─name
+          type
+          price
+          description
+          imageUrl
+          createdAt
+       paymentType
+       orderType
+       tableNumber
+       total
+       createdAt
+```
+
+---
+
+## Geliştirici
+
+GitHub:
+https://github.com/MetaMsa
