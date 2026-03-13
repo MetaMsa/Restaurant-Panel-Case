@@ -38,16 +38,20 @@ function Sidebar() {
           <ul>
             {orders.length > 0 ? (
               orders.map((order) => (
-                <li key={order.id}>
-                  # {order.id} <br/> -{" "}
-                  {order.items.map((i) => {
-                    return `${i.name} x ${i.quantity} (${(i.price * i.quantity).toFixed(2)}₺)`;
-                  }).join(", ")} <br/>
-                  {order.paymentType} - {order.orderType} <br/>
+                <li key={order.id} className="my-3">
+                  # {order.id} <br /> -{" "}
+                  {order.items
+                    .map((i) => {
+                      return `${i.name} x ${i.quantity} (${(i.price * i.quantity).toFixed(2)}₺)`;
+                    })
+                    .join(", ")}{" "}
+                  <br />
+                  {order.paymentType} - {order.orderType}
+                  {order.tableNumber && (` ${order.tableNumber}`)} <br />
                   {order.createdAt instanceof Timestamp
                     ? order.createdAt?.toDate().toLocaleString()
-                    : "Tarih yok"}{" "} <br/>
-                  - Toplam:{" "}
+                    : "Tarih yok"}{" "}
+                  <br />- Toplam:{" "} 
                   {order.items
                     .reduce(
                       (orderTotal, item) =>
@@ -59,9 +63,9 @@ function Sidebar() {
                 </li>
               ))
             ) : (
-              <div className="spinner-border" role="status">
+              <li className="spinner-border" role="status">
                 <span className="visually-hidden">Yükleniyor...</span>
-              </div>
+              </li>
             )}
           </ul>
           <p>
