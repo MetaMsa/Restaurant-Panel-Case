@@ -5,6 +5,9 @@ Kullanıcılar ürünleri görüntüleyebilir, sepete ekleyebilir ve sipariş ol
 
 Proje bir **case çalışması** kapsamında geliştirilmiştir.
 
+Live Demo:
+https://restaurant-panel-1c568.web.app/
+
 ---
 
 ## Özellikler
