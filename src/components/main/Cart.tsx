@@ -3,15 +3,15 @@ import type { CartItem } from "../../App.tsx";
 
 function Footer({
   cart,
-  onClick,
   isPaying,
+  onClick,
   setPaymentType,
   setOrderType,
   orderType,
   setTableNumber,
 }: {
   cart: CartItem[];
-  onClick: (paymentType: string, orderType: string) => void;
+  onClick: () => void;
   isPaying: boolean;
   setPaymentType: React.Dispatch<React.SetStateAction<string>>;
   setOrderType: React.Dispatch<React.SetStateAction<string>>;
@@ -103,8 +103,8 @@ function Footer({
           </div>
           <button
             className="btn btn-success w-50"
-            onClick={() => onClick(paymentType, orderType)}
             disabled={cart.length === 0 || isPaying}
+            onClick={onClick}
           >
             {isPaying ? "Ödeme Yapılıyor..." : "Ödeme Yap"}
           </button>
