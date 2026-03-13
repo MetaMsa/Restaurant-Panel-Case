@@ -142,7 +142,7 @@ function App() {
 
         <ul className="nav justify-content-center gap-3 p-3">
           {["BURGER", "PİZZA", "SALATA", "TATLI", "İÇECEK"].map((t) => (
-            <li className="nav-item mx-5" key={t}>
+            <li className="nav-item mx-sm-5" key={t}>
               <button className="bg-info" onClick={() => setType(t)}>
                 <h1>
                   {t === "BURGER"
